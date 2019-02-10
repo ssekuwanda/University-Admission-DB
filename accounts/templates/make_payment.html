@@ -1,0 +1,26 @@
+{% extends 'base_accounts.html' %}
+
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Payment</h3>
+          <form method="post" novalidate>
+            {% csrf_token %}
+                <label for="phone">Phone number</label>
+                <input type="number" name="number" id=""> <br>
+                <label for="phone">Amount</label>
+                <input type="number" name="amount" id="">
+                <button type="submit" class="btn btn-primary btn-block">Pay</button>
+            </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          Enter your pin to confirm Payment
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
