@@ -4,3 +4,4 @@ dj-static
 gunicorn
 django-widgets-improved
 django-crispy-forms
+django_heroku
