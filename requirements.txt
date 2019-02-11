@@ -1,0 +1,6 @@
+django
+dj-database-url
+dj-static
+gunicorn
+django-widgets-improved
+django-crispy-forms
