@@ -25,7 +25,7 @@ SECRET_KEY = '$rosla1r%1d*i1(zua8&gb$-j#)%sj)*tw0&zp#x1fu09_hv%-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['universityadmission.herokuapp.com']
 
 
 # Application definition
