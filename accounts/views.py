@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, TemplateView
 from .models import Profile
 
-from .forms import SignUpForm, UserInformationUpdateForm
+from .forms import SignUpForm, UserInformationUpdateForm, ProfileForm
 
 
 def signup(request):
@@ -33,3 +33,7 @@ class UserUpdateView(UpdateView):
 
 class HomeTemplateView(TemplateView):
     template_name = 'front/home.html'
+
+def apply(request):
+    form = ProfileForm(request.POST)
+    return render(request, 'front/apply.html', {'form':form})

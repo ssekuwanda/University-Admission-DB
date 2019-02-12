@@ -33,4 +33,5 @@ urlpatterns = [
         name='password_change_done'),
 
     path('', accounts_views.HomeTemplateView.as_view() , name='home'),
+    path('apply/', accounts_views.apply, name='apply'),
 ]

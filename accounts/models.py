@@ -61,12 +61,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
-
-
-# def user_post_save_receiver(sender, instance, created, *args, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-#     instance.profile.save()
-
-# post_save.connect(user_post_save_receiver, sender=User)
-
