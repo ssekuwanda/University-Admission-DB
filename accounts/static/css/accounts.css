@@ -4,11 +4,7 @@
 }
 
 body {
-  background-image: url(../img/back.jpg);
-  background-repeat: no-repeat;
-  /* background-position: center; */
-  background-size: auto;
-  /* background-color: rgb(141, 184, 221); */
+  background: url(../img/back.jpg) fixed; 
   font-family: Lora;
 }
 
