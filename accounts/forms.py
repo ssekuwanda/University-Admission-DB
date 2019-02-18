@@ -20,4 +20,4 @@ class UserInformationUpdateForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('__all__')
+        exclude = ('slug','user','given_first','given_second','given_third',)

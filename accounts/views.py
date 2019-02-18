@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, TemplateView
 from .models import Profile
+from django.contrib.auth.models  import User
 
 from .forms import SignUpForm, UserInformationUpdateForm, ProfileForm
 
@@ -34,6 +35,8 @@ class UserUpdateView(UpdateView):
 class HomeTemplateView(TemplateView):
     template_name = 'front/home.html'
 
+# @login_required
 def apply(request):
     form = ProfileForm(request.POST)
+    user = User.objects.first()
     return render(request, 'front/apply.html', {'form':form})
