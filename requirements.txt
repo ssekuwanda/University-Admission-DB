@@ -6,3 +6,5 @@ django-widgets-improved
 django-crispy-forms
 django_heroku
 pillow
+reportlab
+xhtml2pdf

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile
+from .models import Profile, Apply
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user','primary_school', 'olevel_school', 'alevel_school',)
@@ -8,3 +8,4 @@ class ProfileAdmin(admin.ModelAdmin):
     ordering = ['created']
 
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Apply)

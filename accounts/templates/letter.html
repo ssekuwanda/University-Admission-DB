@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <style type="text/css">
+            .bodyBody {
+                margin: 10px;
+                font-size: 1.50em;
+            }
+            .divHeader {
+                text-align: right;
+                border: 1px solid;
+            }
+            .divReturnAddress {
+                text-align: left;
+                float: right;
+            }
+            .divSubject {
+                clear: both;
+                font-weight: bold;
+                padding-top: 40px;
+            }
+            .divAdios {
+                float: right;
+                padding-top: 10px;
+                
+            }
+        </style>
+    </head>
+    <body class="bodyBody">
+        <div class="divReturnAddress">
+            NDEJJE UNIVERSITY,<br/>
+            P.0. Box 7088, <br/>
+            Tel: 03920020, 041022002 <br/>    
+            <br>
+            {{ today }}
+        </div>
+
+        <div class="divSubject">
+            RE:  Admission Letter
+        </div>
+
+        <div class="divContents">
+            <p>
+                {% for course in courses %}
+                Dear {{ course.user|capfirst }},
+                
+            </p>
+
+            <p>
+                Congratulations! you have successfully been shortlisted for the academic year {{ course.academic_year }}
+                in the course of {{ course.course_being_applied_for }} you applied to Ndejje University on {{ course.time_stamp }}.
+                This course should be taken from {{ course.campus }} in the {{ course.programme }} programme.
+            </p>
+        </div>
+
+        <div class="divAdios">
+            <br/>
+            Yours sincery; <br/>
+            Jane Mary <br/>
+            Secretary Ndejje University
+            {% endfor %}
+        </div>
+    </body>
+</html>

@@ -13,6 +13,17 @@ COURSE_CHOICES = (
     ('BSTAT','BSTAT'),
 )
 
+CAMPUS = (
+    ('Main campus','Main campus'),
+    ('Kampala campus','Kampala campus'),
+)
+
+PROGRAMME = (
+    ('Weekend','Weekend'),
+    ('Evening','Evening'),
+    ('Inservice','Inservice'),
+)
+
 class Profile(models.Model):
     # background tasks
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -20,11 +31,11 @@ class Profile(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     # student bio-data
-    name = models.CharField(max_length=100,null=True, blank=True)
+    name = models.CharField(max_length=100,null=True, blank=True, help_text="eg. First Last")
     slug = models.SlugField()
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='male')
-    phone_number = models.IntegerField(blank=True, null=True)
+    phone_number = models.IntegerField(blank=True, null=True, help_text="0700000000")
     email = models.EmailField(null=True, blank=True)
     photo = models.ImageField(null=True, blank=True)
     birth_certificate = models.FileField(null=True, blank=True, upload_to='birthCerts/%Y/%m')
@@ -49,15 +60,18 @@ class Profile(models.Model):
     aggregates = models.IntegerField(null=True, blank=True)
     alevel_Certificate = models.FileField(null=True, blank=True, upload_to='alevel-certs/%Y/%m')
 
-    # Course being applied for
-    first_course = models.CharField(max_length=100, choices=COURSE_CHOICES)
-    given_first = models.BooleanField(default=False)
-
-    second_course = models.CharField(max_length=100, choices=COURSE_CHOICES)
-    given_second = models.BooleanField(default=False)
-
-    third_course = models.CharField(max_length=100, choices=COURSE_CHOICES)
-    given_third = models.BooleanField(default=False)
-
     def __str__(self):
         return self.name
+
+class Apply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course')
+    time_stamp = models.DateField(auto_now_add=True, null=True, blank=True)
+    academic_year = models.CharField(max_length=122, help_text='eg. 2019')
+    course_being_applied_for = models.CharField(max_length=122, help_text='BBA, PGDE, etc')
+    campus = models.CharField(max_length=122, choices=CAMPUS)
+    programme = models.CharField(max_length=122, choices=PROGRAMME)
+    resident = models.BooleanField(default=False, help_text='All fresh stuents of the Main Campus MUST stay in the university halls')
+    qualifies = models.BooleanField(default=True)
+
+    def __str__(self):
+        return str(self.user)+'-'+str(self.course_being_applied_for)

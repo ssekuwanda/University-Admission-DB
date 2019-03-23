@@ -32,6 +32,9 @@ urlpatterns = [
     path('settings/password/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
         name='password_change_done'),
 
-    path('', accounts_views.HomeTemplateView.as_view() , name='home'),
-    path('apply/', accounts_views.apply, name='apply'),
+    path('', accounts_views.FrontTemplateView.as_view() , name='frontpage'),
+    path('home/', accounts_views.home, name='home'),
+    path('home/profile/', accounts_views.profile, name='profile'),
+    path('home/apply/', accounts_views.apply, name='apply'),
+    path('generate_pdf/<int:id>/', accounts_views.generate_pdf, name='generate_pdf'),
 ]
