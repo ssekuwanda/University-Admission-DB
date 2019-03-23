@@ -80,7 +80,7 @@ def generate_pdf(request, id):
     pdf = render_to_pdf('letter.html', context)
     if pdf:
         response = HttpResponse(pdf, content_type='application/pdf')
-        filename = "Invoice_%s.pdf" %("12341231")
+        filename = "%s-admissionletter.pdf" %(request.user)
         content = "inline; filename='%s'" %(filename)
         download = request.GET.get("download")
         if download:
